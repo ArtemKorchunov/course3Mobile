@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.example.jonnyb.smack.Adapters.DeviceRecycleAdapter
+import com.example.jonnyb.smack.Model.Device
 import com.example.jonnyb.smack.R
 import com.example.jonnyb.smack.Services.DeviceService
 import com.example.jonnyb.smack.Services.UserDataService
@@ -50,7 +51,6 @@ class MainActivity : AppCompatActivity() {
             DeviceService.get(0, 5) { response ->
                 if (response) {
                     setupAdapters()
-
                 } else {
                     errorToast()
                 }
@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             val loginIntent = Intent(this, LoginActivity::class.java)
             startActivity(loginIntent)
+            finish()
         }
     }
 
@@ -95,6 +96,13 @@ class MainActivity : AppCompatActivity() {
                         val descTextField = dialogView.findViewById<EditText>(R.id.addChannelDescTxt)
                         val channelName = nameTextField.text.toString()
                         val channelDesc = descTextField.text.toString()
+                        val device = Device(
+                                (1000..70000).random(),
+                                channelName,
+                                channelDesc,
+                                false
+                        )
+                        adapter.add(device)
                     }
                     .setNegativeButton("Cancel") { _, _ ->
                         // Cancel and close the dialog

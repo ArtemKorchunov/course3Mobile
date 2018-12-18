@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toEndOf="@+id/deviceItemBg"
         app:layout_constraintTop_toTopOf="@+id/deviceItemBg"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <TextView
         android:id="@+id/description"
@@ -40,10 +40,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/deviceItemBg"
         app:layout_constraintEnd_toStartOf="@+id/deviceItemBg"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toEndOf="@+id/deviceItemBg"
         app:layout_constraintTop_toTopOf="@+id/deviceItemBg"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <TextView
         android:id="@+id/status"
@@ -54,9 +54,25 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/deviceItemBg"
         app:layout_constraintEnd_toStartOf="@+id/deviceItemBg"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toEndOf="@+id/deviceItemBg"
         app:layout_constraintTop_toTopOf="@+id/deviceItemBg"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.522" />
+
+    <Button
+        android:id="@+id/deleteListIten"
+        android:layout_width="66dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Delete"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/deviceItemBg"
+        app:layout_constraintEnd_toEndOf="@+id/deviceItemBg"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintTop_toBottomOf="@+id/deviceItemBg" />
 
 </android.support.constraint.ConstraintLayout>
