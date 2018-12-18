@@ -47,6 +47,7 @@ class DeviceRecycleAdapter(val context: Context, val devices: ArrayList<Device>,
             deviceStatus?.text = device.status.toString()
             itemView.setOnClickListener { itemClick(device) }
             deviceDeleteBtn!!.setOnClickListener {
+                DeviceService.delete(device.id)
                 delete(devices.indexOf(device))
             }
         }

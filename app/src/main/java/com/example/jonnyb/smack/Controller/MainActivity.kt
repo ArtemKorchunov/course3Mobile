@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.Toast
 import com.example.jonnyb.smack.Adapters.DeviceRecycleAdapter
 import com.example.jonnyb.smack.Model.Device
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAdapters() {
         adapter = DeviceRecycleAdapter(this, DeviceService.devices) { device ->
-            println(device)
+            onDeviceListItemClicked(device)
         }
         deviceListView.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
@@ -67,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onDeviceListItemClicked(device: Device) {
+
+    }
+
     fun loginBtnNavClicked(view: View) {
 
         if (App.prefs.isLoggedIn) {
@@ -85,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun addChannelClicked(view: View) {
+    fun addDeviceClicked(view: View) {
         if (App.prefs.isLoggedIn) {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.add_channel_dialog, null)
@@ -94,15 +99,20 @@ class MainActivity : AppCompatActivity() {
                     .setPositiveButton("Add") { _, _ ->
                         val nameTextField = dialogView.findViewById<EditText>(R.id.addChannelNameTxt)
                         val descTextField = dialogView.findViewById<EditText>(R.id.addChannelDescTxt)
+                        val statusSwitcher = dialogView.findViewById<Switch>(R.id.addDeviceSwitcher)
                         val channelName = nameTextField.text.toString()
                         val channelDesc = descTextField.text.toString()
+                        val statusChecked = statusSwitcher.isChecked()
                         val device = Device(
                                 (1000..70000).random(),
                                 channelName,
                                 channelDesc,
-                                false
+                                statusChecked
                         )
                         adapter.add(device)
+                        DeviceService.post(device) {complete ->
+                            if (!complete) errorToast()
+                        }
                     }
                     .setNegativeButton("Cancel") { _, _ ->
                         // Cancel and close the dialog

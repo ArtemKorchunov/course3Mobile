@@ -10,7 +10,9 @@ const val SOCKET_URL = "https://devslopes-chattin.herokuapp.com/"
 
 const val URL_REGISTER = "${BASE_URL}oauth/token"
 const val URL_LOGIN = "${BASE_URL}oauth/login"
+
 const val URL_GET_DEVICE = "${BASE_URL}device"
+const val URL_POST_DEVICE = "${BASE_URL}device"
 
 const val URL_CREATE_USER = "${BASE_URL}user/add"
 const val URL_GET_USER = "${BASE_URL}user/byEmail/"

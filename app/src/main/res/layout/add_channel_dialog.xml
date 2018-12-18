@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="300dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="26dp"
-        android:text="Add Channel"
+        android:layout_marginBottom="16dp"
+        android:text="Add Device"
         android:textAlignment="center"
         android:textSize="18sp" />
 
@@ -18,9 +19,9 @@
         android:id="@+id/addChannelNameTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:hint="channel name"
         android:inputType="textPersonName"
@@ -30,11 +31,24 @@
         android:id="@+id/addChannelDescTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:hint="channel description"
         android:inputType="textPersonName"
         android:textColor="@android:color/darker_gray" />
+
+    <Switch
+        android:id="@+id/addDeviceSwitcher"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:checked="false"
+        android:text="Status"
+        android:textAlignment="viewEnd"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        tools:checked="false" />
 </LinearLayout>

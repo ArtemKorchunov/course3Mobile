@@ -17,6 +17,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         loginSpinner.visibility = View.INVISIBLE
+        if (App.prefs.isLoggedIn) {
+            val mainIntent = Intent(this,  MainActivity::class.java)
+            startActivity(mainIntent)
+            finish()
+        }
     }
 
     fun loginLoginBtnClicked(view: View) {
