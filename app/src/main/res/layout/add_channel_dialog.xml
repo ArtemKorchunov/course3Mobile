@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="300dp"
+    android:layout_height="400dp"
     android:orientation="vertical">
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_marginRight="18dp"
         android:layout_marginBottom="18dp"
         android:ems="10"
-        android:hint="channel name"
+        android:hint="device name"
         android:inputType="textPersonName"
         android:textColor="@android:color/darker_gray" />
 
@@ -35,15 +35,23 @@
         android:layout_marginRight="18dp"
         android:layout_marginBottom="18dp"
         android:ems="10"
-        android:hint="channel description"
+        android:hint="device description"
         android:inputType="textPersonName"
         android:textColor="@android:color/darker_gray" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp" />
 
     <Switch
         android:id="@+id/addDeviceSwitcher"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="46dp"
         android:layout_marginLeft="18dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="18dp"
         android:checked="false"
         android:text="Status"

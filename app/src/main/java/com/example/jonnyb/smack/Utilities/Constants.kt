@@ -4,7 +4,7 @@ package com.example.jonnyb.smack.Utilities
  * Created by jonnyb on 9/1/17.
  */
 
-const val BASE_URL = "http://192.168.0.108:4000/"
+const val BASE_URL = "https://course3.herokuapp.com/"
 //const val BASE_URL = "http://10.0.2.2:3005/v1/"
 const val SOCKET_URL = "https://devslopes-chattin.herokuapp.com/"
 

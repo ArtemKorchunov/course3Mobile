@@ -1,5 +1,6 @@
 package com.example.jonnyb.smack.Controller
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -41,6 +42,12 @@ class CreateUserActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
             enableSpinner(false)
         }
+    }
+
+    fun loginBtnClicked(view: View) {
+        val loginIntent = Intent(this, LoginActivity::class.java)
+        startActivity(loginIntent)
+        finish()
     }
 
     fun errorToast() {
