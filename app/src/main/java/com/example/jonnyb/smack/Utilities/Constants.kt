@@ -14,6 +14,8 @@ const val URL_LOGIN = "${BASE_URL}oauth/login"
 const val URL_GET_DEVICE = "${BASE_URL}device"
 const val URL_POST_DEVICE = "${BASE_URL}device"
 
+const val URL_GET_SENSOR = "${BASE_URL}iot/sensors"
+
 const val URL_CREATE_USER = "${BASE_URL}user/add"
 const val URL_GET_USER = "${BASE_URL}user/byEmail/"
 const val URL_GET_CHANNELS = "${BASE_URL}channel/"

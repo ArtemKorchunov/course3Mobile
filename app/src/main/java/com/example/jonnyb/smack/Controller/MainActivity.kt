@@ -8,14 +8,14 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import com.example.jonnyb.smack.Adapters.DeviceRecycleAdapter
 import com.example.jonnyb.smack.Model.Device
 import com.example.jonnyb.smack.R
 import com.example.jonnyb.smack.Services.DeviceService
+import com.example.jonnyb.smack.Services.SensorService
 import com.example.jonnyb.smack.Services.UserDataService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -34,6 +34,17 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         deviceListView.layoutManager = layoutManager
         deviceListView.setHasFixedSize(true)
+    }
+
+    private fun setSensorDropdown(dialogView: View) {
+        val sensorDropdown = dialogView.findViewById<Spinner>(R.id.spinner)
+        val sensorNames = ArrayList<String>()
+        for (sensor in SensorService.sensors) {
+            sensorNames.add(sensor.name)
+        }
+
+        val arrayAdapter =  ArrayAdapter(this, android.R.layout.simple_spinner_item, sensorNames)
+        sensorDropdown.adapter = arrayAdapter
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +68,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+            SensorService.get() {response ->
+                if(response) {
+                } else {
+                    errorToast()
+                }
+
+            }
+
         }
     }
 
@@ -94,12 +113,15 @@ class MainActivity : AppCompatActivity() {
         if (App.prefs.isLoggedIn) {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.add_channel_dialog, null)
-
+            setSensorDropdown(dialogView)
             builder.setView(dialogView)
                     .setPositiveButton("Add") { _, _ ->
                         val nameTextField = dialogView.findViewById<EditText>(R.id.addChannelNameTxt)
                         val descTextField = dialogView.findViewById<EditText>(R.id.addChannelDescTxt)
                         val statusSwitcher = dialogView.findViewById<Switch>(R.id.addDeviceSwitcher)
+                        val spinner = dialogView.findViewById<Spinner>(R.id.spinner)
+                        val spinnerValue = spinner.getSelectedItem().toString()
+                        val currentSensor = SensorService.sensors.find { sensor -> sensor.name == spinnerValue }
                         val channelName = nameTextField.text.toString()
                         val channelDesc = descTextField.text.toString()
                         val statusChecked = statusSwitcher.isChecked()
@@ -110,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                                 statusChecked
                         )
                         adapter.add(device)
-                        DeviceService.post(device) {complete ->
+                        DeviceService.post(device, currentSensor!!.id) {complete ->
                             if (!complete) errorToast()
                         }
                     }

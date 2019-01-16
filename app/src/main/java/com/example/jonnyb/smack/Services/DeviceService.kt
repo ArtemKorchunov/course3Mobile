@@ -7,7 +7,6 @@ import com.android.volley.toolbox.StringRequest
 import com.example.jonnyb.smack.Controller.App
 import com.example.jonnyb.smack.Model.Device
 import com.example.jonnyb.smack.Utilities.URL_GET_DEVICE
-import com.example.jonnyb.smack.Utilities.URL_LOGIN
 import com.example.jonnyb.smack.Utilities.URL_POST_DEVICE
 import org.json.JSONArray
 import org.json.JSONException
@@ -56,12 +55,13 @@ object DeviceService {
         App.prefs.requestQueue.add(registerRequest)
     }
 
-    fun post(device: Device, complete: (Boolean) -> Unit) {
+    fun post(device: Device, sensorId: Int, complete: (Boolean) -> Unit) {
         val jsonArray = JSONArray()
         jsonArray.put(1)
         val jsonBody = JSONObject()
         jsonBody.put("id", device.id)
         jsonBody.put("name", device.name)
+        jsonBody.put("sensor_id", sensorId)
         jsonBody.put("description", device.description)
         jsonBody.put("status", device.status)
         jsonBody.put("charts", jsonArray)
