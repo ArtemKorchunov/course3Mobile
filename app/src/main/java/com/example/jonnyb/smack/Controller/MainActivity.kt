@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         val id = "my_channel_01";
         if (android.os.Build.VERSION.SDK_INT >= 26) {
             val mBuilder = Notification.Builder(this)
-                    .setSmallIcon(R.drawable.ic_menu_camera)
+                    .setSmallIcon(R.drawable.abc_ab_share_pack_mtrl_alpha)
                     .setContentTitle("Your device is unstable")
                     .setContentText("Device temperature is now ${heat}! °C")
                     .setChannelId(id)
