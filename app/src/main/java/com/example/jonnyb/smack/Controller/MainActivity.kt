@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         options.query = "token=${App.prefs.authToken}"
         try {
             // 192.168.0.108 192.168.43.228
-            val manager = Manager(URI("http://192.168.43.228:4000"), managerOptions)
+            val manager = Manager(URI("https://course3.herokuapp.com"), managerOptions)
             val namespaceSocket = Socket(manager, "/account",  options)
             namespaceSocket.connect()
             namespaceSocket.on("payload", onNewMessage)
