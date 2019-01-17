@@ -3,7 +3,7 @@
     package="com.example.jonnyb.smack">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="26" />
     <application
         android:name=".Controller.App"
         android:allowBackup="true"
@@ -25,6 +25,17 @@
         </activity>
         <activity android:name=".Controller.CreateUserActivity" />
         <activity android:name=".Controller.ChartActivity"></activity>
+
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true" />
+
+        <service
+            android:name=".Services.NotificationService"
+            android:enabled="true" />
     </application>
+
+
 
 </manifest>
