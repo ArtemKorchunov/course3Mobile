@@ -30,14 +30,10 @@ import io.socket.client.Manager
 import java.net.URI
 import java.net.URISyntaxException
 import org.json.JSONObject
-import android.support.v4.app.FragmentActivity
-import android.util.Log
 import io.socket.emitter.Emitter
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import android.support.v4.app.NotificationCompat
-import com.example.jonnyb.smack.Utilities.NotificationUtils
 
 
 class MainActivity : AppCompatActivity() {
